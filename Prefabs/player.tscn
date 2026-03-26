@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cnwqaf314chkf"]
+
+[ext_resource type="Script" uid="uid://qth3dyrobvsm" path="res://Scripts/core/player_mover.gd" id="1_y6xdh"]
+[ext_resource type="Resource" uid="uid://u16fbc3joisq" path="res://Data/chara_mvmt_stats/default.tres" id="2_5wxv7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5wxv7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y5hcb"]
+
+[node name="Player" type="CharacterBody3D" unique_id=2106259580]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=472719051]
+mesh = SubResource("CapsuleMesh_5wxv7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1771861304]
+shape = SubResource("CapsuleShape3D_y5hcb")
+
+[node name="PlayerMover" type="Node" parent="." unique_id=287042323 node_paths=PackedStringArray("target")]
+script = ExtResource("1_y6xdh")
+target = NodePath("..")
+chara_mvmt_stats = ExtResource("2_5wxv7")
+metadata/_custom_type_script = "uid://qth3dyrobvsm"
