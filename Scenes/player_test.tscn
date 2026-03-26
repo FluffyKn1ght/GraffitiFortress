@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bjv5putvmbno0"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://w6krwx63pa8g" path="res://Data/phymat/bouncy.phymat" id="1_acvas"]
+[ext_resource type="Material" uid="uid://3l8ruhd5h05i" path="res://Data/material/niko.material" id="2_pm723"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_70u62"]
+size = Vector3(16, 0.5, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yi8xp"]
+material = ExtResource("2_pm723")
+size = Vector3(16, 0.5, 16)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wix4t"]
+
+[sub_resource type="Sky" id="Sky_q14eo"]
+sky_material = SubResource("ProceduralSkyMaterial_wix4t")
+
+[sub_resource type="Environment" id="Environment_5n1oj"]
+background_mode = 2
+sky = SubResource("Sky_q14eo")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Node3D" type="Node3D" unique_id=91750907]
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1527996884]
+physics_material_override = ExtResource("1_acvas")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=1506350929]
+shape = SubResource("BoxShape3D_70u62")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=873609546]
+mesh = SubResource("BoxMesh_yi8xp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=36574227]
+environment = SubResource("Environment_5n1oj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1120311251]
+transform = Transform3D(0.87497485, -2.1163672e-08, 0.48416838, -0.48416838, -3.8246366e-08, 0.87497485, 0, -1, -4.371139e-08, 1.1232243, 8.106409, 0)
+shadow_enabled = true

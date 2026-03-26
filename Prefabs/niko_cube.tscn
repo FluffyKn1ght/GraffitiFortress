@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bn1txwbafjqcu"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://w6krwx63pa8g" path="res://Data/phymat/bouncy.phymat" id="1_3p2c7"]
-[ext_resource type="Material" uid="uid://3l8ruhd5h05i" path="res://Assets/material/niko.material" id="1_8mhwj"]
+[ext_resource type="Material" uid="uid://3l8ruhd5h05i" path="res://Data/material/niko.material" id="1_8mhwj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p2c7"]
 material = ExtResource("1_8mhwj")

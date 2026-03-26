@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://co47oyr4y770l"]
 
-[ext_resource type="Script" uid="uid://2aod76gjs6dr" path="res://Scripts/debug_overlay.gd" id="1_8bw7o"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_g2asw"]
-line_spacing = 1.5
+[ext_resource type="Script" uid="uid://2aod76gjs6dr" path="res://Scripts/core/debug_overlay.gd" id="1_8bw7o"]
 
 [node name="DebugOverlay" type="CanvasLayer" unique_id=796314271]
 layer = 1024
@@ -17,12 +14,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="label" type="Label" parent="root" unique_id=1464348740]
+[node name="label" type="RichTextLabel" parent="root" unique_id=941142029]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 177.0
+offset_right = 1.0
 grow_vertical = 2
-text = "debug info will be here"
-label_settings = SubResource("LabelSettings_g2asw")
+fit_content = true
+autowrap_mode = 0

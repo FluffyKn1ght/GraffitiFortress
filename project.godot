@@ -17,12 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Init="uid://wuatb3t36gwq"
 DebugOverlay="*uid://co47oyr4y770l"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1024
+window/size/viewport_height=768
 window/stretch/aspect="expand"
 
 [dotnet]
