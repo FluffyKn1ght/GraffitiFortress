@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bn1txwbafjqcu"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://w6krwx63pa8g" path="res://Data/phymat/bouncy.phymat" id="1_3p2c7"]
+[ext_resource type="Material" uid="uid://3l8ruhd5h05i" path="res://Assets/material/niko.material" id="1_8mhwj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3p2c7"]
+material = ExtResource("1_8mhwj")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slfmy"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="niko" type="RigidBody3D" unique_id=539858673]
+physics_material_override = ExtResource("1_3p2c7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1693015476]
+mesh = SubResource("BoxMesh_3p2c7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1299436716]
+shape = SubResource("BoxShape3D_slfmy")
