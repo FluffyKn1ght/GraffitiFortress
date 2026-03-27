@@ -4,6 +4,8 @@ extends Node
 
 
 func _physics_process(delta: float) -> void:
+	# TODO: Fix camera clipping
+	
 	if Global.local_chara:
 		Global.local_chara.joystick = Input.get_vector("Left", "Right", "Up", "Down")
 		Global.local_chara.jump = Input.is_action_pressed("Jump")

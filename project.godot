@@ -66,6 +66,8 @@ Jump={
 [layer_names]
 
 3d_render/layer_2="occlude_first_person"
+3d_physics/layer_1="Characters"
+3d_physics/layer_2="Static"
 
 [physics]
 

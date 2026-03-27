@@ -3,7 +3,10 @@
 [ext_resource type="Environment" uid="uid://w6soms8ltoqa" path="res://Data/environment/default.tres" id="1_285le"]
 [ext_resource type="Script" uid="uid://cckso0dle6voh" path="res://Scripts/playertest.gd" id="1_gaje0"]
 [ext_resource type="Material" uid="uid://7vnhw7vpaykb" path="res://Data/material/mewo-1m.tres" id="2_upg3i"]
+[ext_resource type="PhysicsMaterial" uid="uid://w6krwx63pa8g" path="res://Data/phymat/bouncy.phymat" id="4_0ebsj"]
 [ext_resource type="PackedScene" uid="uid://camqdncc1qdv4" path="res://Prefabs/character/test_chara.tscn" id="4_gwxu7"]
+[ext_resource type="Material" uid="uid://3l8ruhd5h05i" path="res://Data/material/niko.material" id="5_u723v"]
+[ext_resource type="PhysicsMaterial" uid="uid://cjwnwbfr3kf3x" path="res://Data/phymat/slippery.phymat" id="6_xk75p"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gaje0"]
 material = ExtResource("2_upg3i")
@@ -11,6 +14,13 @@ size = Vector3(16, 1, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwxu7"]
 size = Vector3(16, 1, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i48i7"]
+material = ExtResource("5_u723v")
+size = Vector3(8, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0ekd"]
+size = Vector3(8, 1, 8)
 
 [node name="PlayerTest" type="Node3D" unique_id=2070623617]
 script = ExtResource("1_gaje0")
@@ -23,6 +33,7 @@ transform = Transform3D(1, 0, 0, 0, -0.3085854, 0.9511967, 0, -0.9511967, -0.308
 shadow_enabled = true
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1124404513]
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1453656761]
 mesh = SubResource("BoxMesh_gaje0")
@@ -30,8 +41,31 @@ mesh = SubResource("BoxMesh_gaje0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=1051545336]
 shape = SubResource("BoxShape3D_gwxu7")
 
+[node name="floor4" type="StaticBody3D" parent="." unique_id=211926119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.480316, 0, 12.64086)
+collision_layer = 2
+physics_material_override = ExtResource("4_0ebsj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor4" unique_id=2098239198]
+mesh = SubResource("BoxMesh_i48i7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor4" unique_id=1765565996]
+shape = SubResource("BoxShape3D_a0ekd")
+
+[node name="floor5" type="StaticBody3D" parent="." unique_id=2046831905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.990839, 0, 12.64086)
+collision_layer = 2
+physics_material_override = ExtResource("6_xk75p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor5" unique_id=29150962]
+mesh = SubResource("BoxMesh_i48i7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor5" unique_id=141188681]
+shape = SubResource("BoxShape3D_a0ekd")
+
 [node name="floor2" type="StaticBody3D" parent="." unique_id=1730329335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor2" unique_id=1508107940]
 mesh = SubResource("BoxMesh_gaje0")
@@ -41,6 +75,7 @@ shape = SubResource("BoxShape3D_gwxu7")
 
 [node name="floor3" type="StaticBody3D" parent="." unique_id=1838016231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -8)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor3" unique_id=1156455405]
 mesh = SubResource("BoxMesh_gaje0")
@@ -53,3 +88,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3520572, 1.25, 1.8272645)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1303534964]
 transform = Transform3D(-4.371139e-08, -0.7071068, 0.7071068, 0, 0.7071068, 0.7071068, -1, 3.090862e-08, -3.090862e-08, 9.761, 6.777, 0)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=692727364]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6001881, 7.22293)
+text = "<----- bouncy
+-----> slippery"
+font_size = 64

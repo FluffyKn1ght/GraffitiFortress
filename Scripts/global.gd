@@ -7,7 +7,7 @@ const PROCESS_FPS: int = 60
 # Physics frames per second
 var PHYSICS_FPS: int = ProjectSettings.get_setting("physics/common/physics_ticks_per_second")
 # Gravity strength (aka freefall acceleration (g)), in meters per second
-var GRAVITY_STRENGTH: float = 17.5
+var GRAVITY_STRENGTH: float = 18.75
 
 # Camera sensitivity
 var camera_sensitivity: float = 0.5
