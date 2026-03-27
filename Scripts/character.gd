@@ -9,6 +9,8 @@ enum CharacterState {
 	DEAD
 }
 
+const MIN_DECEL_GROUND_VELOCITY: float = 0.005
+
 # The current state of the character
 var current_state: CharacterState:
 	set(to):
@@ -62,31 +64,52 @@ func _physics_process(delta: float) -> void:
 		var accel_amount: float = (mvmt_speed_normal / mvmt_acceleration) / Global.PHYSICS_FPS
 		
 		# Apply the acceleration while also limiting total ground velocity
-		ground_velocity.y += accel_amount * joystick.y
-		ground_velocity.x += accel_amount * joystick.x
+		ground_velocity.y += accel_amount * norm_joystick.y
+		ground_velocity.x += accel_amount * norm_joystick.x
 	else:
 		# Decelerate to a complete stop if we haven't stopped already
-		if ground_velocity.length() > 0.2:
+		if ground_velocity.length() > MIN_DECEL_GROUND_VELOCITY:
 			# Find the amount of deceleration we need to apply this frame
 			var decel_amount: float = (mvmt_speed_normal / mvmt_deceleration) / Global.PHYSICS_FPS
 			
-			# Calculate the correct direction to apply deceleration in
-			var x_dir: int = 1
-			var z_dir: int = 1
-			
-			if ground_velocity.y < 0: x_dir = -1
-			elif ground_velocity.y == 0: x_dir = 0
-			
-			if ground_velocity.x < 0: z_dir = -1
-			elif ground_velocity.x == 0: z_dir = 0
-			
-			# Apply the deceleration
-			ground_velocity.y -= decel_amount * x_dir
-			ground_velocity.x -= decel_amount * z_dir
-		elif ground_velocity.length() < 0.2:
+			# Make sure we don't overshoot and turn into a quartz clock oscillator-
+			if ground_velocity.length() - decel_amount <= 0:
+				ground_velocity = Vector2.ZERO
+			else:
+				# Calculate the correct direction to apply deceleration in
+				var x_dir: int = -1
+				var z_dir: int = -1
+				
+				if ground_velocity.y < 0: z_dir = 1
+				elif ground_velocity.y == 0: z_dir = 0
+				
+				if ground_velocity.x < 0: x_dir = 1
+				elif ground_velocity.x == 0: x_dir = 0
+				
+				# Apply the deceleration
+				ground_velocity.y += decel_amount * z_dir
+				ground_velocity.x += decel_amount * x_dir
+				print(ground_velocity)
+				
+		elif ground_velocity.length() < MIN_DECEL_GROUND_VELOCITY:
 			ground_velocity = Vector2.ZERO
 	# Limit ground velocity
 	ground_velocity = ground_velocity.limit_length(mvmt_speed_normal)
+	
+	#endregion
+	
+	#region Air velocity
+	
+	if jump:
+		jump = false
+		if is_on_floor():
+			air_velocity = sqrt(2 * (Global.GRAVITY_STRENGTH * mvmt_gravity_multi) * mvmt_jump_height)
+		
+	if not is_on_floor():
+		air_velocity -= (Global.GRAVITY_STRENGTH * mvmt_gravity_multi) / Global.PHYSICS_FPS
+		air_velocity = clampf(air_velocity, -(Global.GRAVITY_STRENGTH * mvmt_gravity_multi), INF)
+	else:
+		air_velocity = clampf(air_velocity, 0, INF)
 	
 	#endregion
 	
@@ -100,5 +123,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+# Called by the setter of current_state whenever the character state is changed
 func _chara_state_changed(old: CharacterState, new: CharacterState) -> void:
 	pass

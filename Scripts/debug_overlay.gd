@@ -37,4 +37,4 @@ func _process(delta: float) -> void:
 		else:
 			%TopRightLabel.text += " <null>"
 		%TopRightLabel.text += "\n\nState: {0} ({1})".format([Global.local_chara.CharacterState.keys()[Global.local_chara.current_state], Global.local_chara.current_state])
-		%TopRightLabel.text += "\n\nMovement:\nInputs: joy={0} jmp={1} cro={2}\nGround Vel: {3}\nAir Vel: {4}\nTOTAL VEL: {5}".format([Global.local_chara.joystick, Global.local_chara.jump, Global.local_chara.crouch, Global.local_chara.ground_velocity, Global.local_chara.air_velocity, Global.local_chara.velocity])
+		%TopRightLabel.text += "\n\nMovement:\nInputs: joy={0} jmp={1} cro={2}\nGround Vel: {3} ({4})\nAir Vel: {5}\nTOTAL VEL: {6}".format([Global.local_chara.joystick, Input.is_action_pressed("Jump"), Global.local_chara.crouch, Global.local_chara.ground_velocity, Global.local_chara.ground_velocity.length(), Global.local_chara.air_velocity, Global.local_chara.velocity])

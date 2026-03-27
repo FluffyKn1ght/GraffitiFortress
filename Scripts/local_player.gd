@@ -6,6 +6,7 @@ extends Node
 func _physics_process(delta: float) -> void:
 	if Global.local_chara:
 		Global.local_chara.joystick = Input.get_vector("Left", "Right", "Up", "Down")
+		Global.local_chara.jump = Input.is_action_pressed("Jump")
 		
 		if Global.local_chara.current_state == Character.CharacterState.NORMAL:
 			Global.camera.global_position = Global.local_chara.camera_point.global_position
