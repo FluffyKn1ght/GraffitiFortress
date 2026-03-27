@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://camqdncc1qdv4"]
+
+[ext_resource type="Script" uid="uid://dewl1wnbrujuk" path="res://Scripts/character.gd" id="1_q4axa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5bact"]
+height = 1.75
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l588g"]
+height = 1.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpa54"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_almxx"]
+material = SubResource("StandardMaterial3D_dpa54")
+size = Vector3(0.315, 0.335, 0.855)
+
+[node name="TestChara" type="CharacterBody3D" unique_id=504288443 node_paths=PackedStringArray("camera_point")]
+script = ExtResource("1_q4axa")
+camera_point = NodePath("eyes")
+metadata/_custom_type_script = "uid://dewl1wnbrujuk"
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1310770076]
+shape = SubResource("CapsuleShape3D_5bact")
+
+[node name="bean" type="MeshInstance3D" parent="." unique_id=906437983]
+layers = 2
+mesh = SubResource("CapsuleMesh_l588g")
+
+[node name="eyes" type="MeshInstance3D" parent="." unique_id=1696272591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3760978, 0.2460792, 0)
+layers = 2
+mesh = SubResource("BoxMesh_almxx")

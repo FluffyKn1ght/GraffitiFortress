@@ -1,25 +1,40 @@
 [gd_scene format=3 uid="uid://co47oyr4y770l"]
 
-[ext_resource type="Script" uid="uid://2aod76gjs6dr" path="res://Scripts/core/debug_overlay.gd" id="1_8bw7o"]
+[ext_resource type="Script" uid="uid://2aod76gjs6dr" path="res://Scripts/debug_overlay.gd" id="1_8bw7o"]
 
-[node name="DebugOverlay" type="CanvasLayer" unique_id=796314271]
-layer = 1024
+[sub_resource type="LabelSettings" id="LabelSettings_xahtv"]
+line_spacing = 1.5
+
+[node name="DebugOverlay" type="CanvasLayer" unique_id=657284485]
+layer = 8
 script = ExtResource("1_8bw7o")
 
-[node name="root" type="Control" parent="." unique_id=131028803]
+[node name="Control" type="Control" parent="." unique_id=1964313673]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="label" type="RichTextLabel" parent="root" unique_id=941142029]
+[node name="TopLeftLabel" type="Label" parent="Control" unique_id=452812193]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "debug"
+label_settings = SubResource("LabelSettings_xahtv")
+
+[node name="TopRightLabel" type="Label" parent="Control" unique_id=791858900]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 1.0
-grow_vertical = 2
-fit_content = true
-autowrap_mode = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -49.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "debug"
+label_settings = SubResource("LabelSettings_xahtv")
+horizontal_alignment = 2

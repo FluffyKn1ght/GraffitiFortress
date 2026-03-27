@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://7vnhw7vpaykb"]
+
+[ext_resource type="Texture2D" uid="uid://bdnumn2j74or6" path="res://Assets/image/mewo-1m.png" id="1_om42k"]
+
+[resource]
+albedo_texture = ExtResource("1_om42k")
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+texture_filter = 0
